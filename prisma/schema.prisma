@@ -1,0 +1,77 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id           String     @id @default(uuid())
+  email        String     @unique
+  name         String
+  passwordHash String
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  documents    Document[]
+  jobs         Job[]
+  reviews      Review[]
+}
+
+model Document {
+  id        String   @id @default(uuid())
+  ownerId   String
+  owner     User     @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  fileName  String
+  mime      String
+  size      Int
+  storage   Json
+  text      String
+  structure Json
+  createdAt DateTime @default(now())
+  reviews   Review[]
+
+  @@index([ownerId])
+}
+
+model Job {
+  id         String   @id @default(uuid())
+  ownerId    String
+  owner      User     @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  type       String
+  resourceId String?
+  status     String
+  progress   Int
+  message    String
+  resultUrl  String?
+  error      String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([ownerId])
+}
+
+model Review {
+  id                   String   @id @default(uuid())
+  ownerId              String
+  owner                User     @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  documentId           String
+  document             Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  status               String
+  summary              String
+  overallScore         Int      @default(0)
+  scores               Json
+  recommendations      Json
+  checklist            Json
+  suggestions          Json
+  formattingViolations Json
+  disclaimer           String
+  source               String
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  @@index([ownerId])
+  @@index([documentId])
+}

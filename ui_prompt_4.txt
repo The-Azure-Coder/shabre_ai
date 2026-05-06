@@ -1,0 +1,76 @@
+Build two responsive UI screens using React + Tailwind (or shadcn/ui if available):
+
+
+1. Review Detail Workspace
+2. Formatting Checker (Format Tracker)
+
+Read FIRST:
+- AGENTS.md
+- tasks.md
+- /Design/design.json
+- /Design/dark/dark_review_screen.png
+- /Design/dark/format_checker.png
+
+Redesign the Formatting Checker screen to fit perfectly within a 1300px desktop viewport (14-inch laptops) without overflow or crowding.
+
+Layout Changes (IMPORTANT):
+- Use a max-width container: `max-w-[1300px] mx-auto px-4`
+- Replace current 3-column top layout with:
+  → Desktop: 2-column grid
+  → Tablet/Mobile: 1 column
+
+New Structure:
+
+[Row 1]
+- Left (60%): Steps 1 + 2 combined into ONE card
+  - Select Format (compact grid: 2x2)
+  - Choose / Upload Document (tabs: "My Docs" | "Upload")
+
+- Right (40%): Step 3 (AI Reformat)
+  - Toggle
+  - Primary CTA button (full width)
+
+[Row 2]
+- Full width: Step 4 (Review Output)
+
+Review Section (CRITICAL FIX):
+- Replace side-by-side editors with:
+  → Toggle tabs: "Side-by-side" | "Original" | "Reformatted"
+- Default:
+  → 1300px: stacked editors OR tabbed view
+  → ≥1536px: allow true side-by-side
+
+- Add:
+  - Sticky toolbar (Copy, Download, Replace)
+  - Collapsible metadata (pages, words, etc.)
+
+Spacing + Density:
+- Reduce card padding: `p-4 md:p-5`
+- Reduce heading sizes slightly
+- Use tighter vertical rhythm (gap-4 instead of gap-6)
+
+Buttons (MANDATORY):
+- Use ONE shared `<Button />` component
+- Sizes: sm / md (default md)
+- Full-width on mobile, auto on desktop
+- Icons left-aligned with consistent spacing (`gap-2`)
+- No custom button styles anywhere else
+
+Responsive Rules:
+- No horizontal scrolling EVER
+- No fixed widths (use flex/grid)
+- Use breakpoints:
+  - sm: stacked
+  - md: 1 column
+  - lg (1024+): 2 column
+  - xl (1280+): optimized layout for 1300px
+
+UX Improvements:
+- Stepper at top becomes horizontal scroll OR compact pills
+- Upload areas become smaller, not oversized dropzones
+- Reduce empty space inside cards
+
+Output:
+- Clean, responsive React components
+- No layout breaking at 1300px
+- Maintain dark glass UI style

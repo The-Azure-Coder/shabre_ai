@@ -1,0 +1,223 @@
+{
+    "version": 1,
+    "project": "SmartReview AI",
+    "design_source": "/design",
+    "screens": {
+      "dashboard": {
+        "light": "/design/light/dashboard.png",
+        "dark": "/design/dark/dashboard.png",
+        "description": "Main SmartReview AI student dashboard with sidebar, topbar, upload area, AI tools, recent reviews, stats, activity, and deadlines.",
+        "required_text": {
+          "welcome": "Welcome back, Tyrese Morgan!",
+          "role": "Student",
+          "brand": "SmartReview AI"
+        },
+        "layout": {
+          "type": "dashboard",
+          "structure": [
+            "left_sidebar",
+            "topbar",
+            "main_content",
+            "right_panel"
+          ],
+          "grid": {
+            "desktop": "sidebar + main dashboard + right widgets",
+            "tablet": "sidebar collapses, widgets stack",
+            "mobile": "single column with bottom or collapsed navigation"
+          }
+        },
+        "components": [
+          "sidebar",
+          "topbar",
+          "hero_upload_card",
+          "quick_ai_actions",
+          "stats_cards",
+          "ai_tools_grid",
+          "recent_reviews",
+          "recent_activity",
+          "upcoming_deadlines",
+          "credits_card",
+          "theme_toggle"
+        ]
+      }
+    },
+    "themes": {
+      "light": {
+        "background": "#F8FAFF",
+        "surface": "#FFFFFF",
+        "surface_alt": "#F3F0FF",
+        "border": "#E5E7F0",
+        "text_primary": "#111827",
+        "text_secondary": "#64748B",
+        "accent_primary": "#6D3BFF",
+        "accent_secondary": "#8B5CF6",
+        "success": "#22C55E",
+        "warning": "#F59E0B",
+        "danger": "#EF4444",
+        "style": "soft pastel, rounded cards, subtle shadows"
+      },
+      "dark": {
+        "background": "#070B14",
+        "surface": "#0F1724",
+        "surface_alt": "#111827",
+        "border": "#1F2937",
+        "text_primary": "#F8FAFC",
+        "text_secondary": "#94A3B8",
+        "accent_primary": "#7C3AED",
+        "accent_secondary": "#A855F7",
+        "success": "#22C55E",
+        "warning": "#F59E0B",
+        "danger": "#EF4444",
+        "style": "deep navy, glassmorphism, purple glow, high contrast"
+      }
+    },
+    "component_rules": {
+      "sidebar": {
+        "position": "left",
+        "width": "260px",
+        "sections": [
+          "brand",
+          "new_review_button",
+          "main_navigation",
+          "ai_tools",
+          "study_tools",
+          "account",
+          "credits_card"
+        ],
+        "items": [
+          "Dashboard",
+          "My Documents",
+          "Reviews",
+          "Rubric Evaluations",
+          "Formatting Checker",
+          "Writing Tools",
+          "AI Detector",
+          "Humanizer",
+          "Utilities Hub",
+          "Summarizer",
+          "Citation Generator",
+          "Keyword Extractor",
+          "Profile",
+          "Settings",
+          "Help & Support"
+        ]
+      },
+      "topbar": {
+        "position": "top",
+        "contains": [
+          "page_title",
+          "search_bar",
+          "notifications",
+          "help_icon",
+          "user_profile"
+        ],
+        "user_name": "Tyrese Morgan"
+      },
+      "hero_upload_card": {
+        "title": "What would you like to do today?",
+        "features": [
+          "drag_drop_upload",
+          "click_to_upload",
+          "supported_files_text",
+          "primary_upload_button"
+        ],
+        "supported_files": [
+          "PDF",
+          "DOCX",
+          "TXT",
+          "PPTX"
+        ],
+        "max_file_size": "50MB"
+      },
+      "quick_ai_actions": {
+        "items": [
+          "Review Assignment",
+          "Check Formatting",
+          "Evaluate with Rubric",
+          "Humanize Text"
+        ]
+      },
+      "ai_tools_grid": {
+        "items": [
+          "Assignment Review",
+          "Rubric Evaluation",
+          "Formatting Checker",
+          "Writing Tools",
+          "AI Detector",
+          "Humanizer",
+          "File Converter",
+          "Citation Generator",
+          "Summarizer"
+        ]
+      },
+      "stats_cards": {
+        "items": [
+          "Documents Reviewed",
+          "Reviews Completed",
+          "Average Score",
+          "AI Credits Left"
+        ]
+      },
+      "recent_reviews": {
+        "display": "list",
+        "fields": [
+          "file_icon",
+          "file_name",
+          "review_type",
+          "date",
+          "file_size",
+          "score",
+          "view_report_button"
+        ]
+      },
+      "right_panel": {
+        "sections": [
+          "SmartReview AI Tools",
+          "Recent Activity",
+          "Upcoming Deadlines"
+        ]
+      }
+    },
+    "style_rules": {
+      "border_radius": "rounded-xl to rounded-2xl",
+      "spacing": "clean, airy, consistent padding",
+      "buttons": "rounded, purple primary, hover glow",
+      "cards": "rounded with subtle borders",
+      "icons": "simple line icons with colored backgrounds",
+      "typography": {
+        "font": "Inter or similar sans-serif",
+        "headings": "bold, clear hierarchy",
+        "body": "medium contrast, readable"
+      }
+    },
+    "implementation_rules": [
+      "Use these screenshots as the source of truth.",
+      "Do not invent unrelated layouts.",
+      "Use the exact name Tyrese Morgan in profile and welcome sections.",
+      "Dashboard must support both light and dark mode.",
+      "Dark mode must visually match the provided dark screenshot.",
+      "Components must be reusable.",
+      "Use responsive layouts.",
+      "Do not hardcode user data outside mock/demo files.",
+      "Use config/constants for labels, colors, and navigation."
+    ],
+    "files": {
+      "recommended_structure": {
+        "design": [
+          "/design/light/dashboard.png",
+          "/design/dark/dashboard.png",
+          "/design/design.json"
+        ],
+        "frontend": [
+          "/components/layout/sidebar.tsx",
+          "/components/layout/topbar.tsx",
+          "/components/dashboard/upload-card.tsx",
+          "/components/dashboard/tools-grid.tsx",
+          "/components/dashboard/stats-card.tsx",
+          "/components/dashboard/recent-reviews.tsx",
+          "/components/dashboard/activity-panel.tsx",
+          "/components/dashboard/deadlines-panel.tsx"
+        ]
+      }
+    }
+  }
